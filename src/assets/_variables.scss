@@ -1,0 +1,21 @@
+//colors
+$primary-color: #46D246;
+$accent-color: #c1f0c1;
+$background-color: #fff;
+
+//font
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
+$font: 'Roboto', Arial, sans-serif;
+
+//responsive grid
+@mixin breakpoint($point) {
+  @if $point == large {
+    @media (min-width: 70em) { @content; }
+  }
+  @else if $point == medium {
+    @media (min-width: 50em) { @content; }
+  }
+  @else if $point == small {
+    @media (min-width: 37.5em)  { @content; }
+  }
+}

@@ -1,0 +1,30 @@
+//@import "variables";
+
+input[type="radio"] {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+
+.radio-wrapper {
+  position: relative;
+
+  label {
+    display: inline-block;
+    cursor: pointer;
+    background: #fff;
+    color: #46D246;
+    border: 2px solid #46D246;
+    text-transform :uppercase;
+    font-size: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    width: 100%;
+
+    &.selected {
+      color: #fff;
+      background-color: #46D246;
+    }
+  }
+}
