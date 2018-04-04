@@ -1,0 +1,63 @@
+.text-wrapper {
+  background-color: rgba(white, .8);
+  width: 100%;
+  height: 60px;
+  position: relative;
+  margin-bottom: 20px;
+
+  input[type="text"],
+  input[type="number"] {
+    background-color: transparent;
+    border: none;
+    border: 2px solid #46D246;
+    border-radius: 23px;
+    padding: 0;
+    height: 3rem;
+    position: relative;
+    z-index: 2;
+    font-size: 18px;
+    color: #46D246;
+
+    &:focus {
+      border-radius: 23px;
+      border: 1px solid rgba(#46D246, .9);
+      outline: none !important;
+      transition: border 0.15s ease;
+    }
+
+    &.text {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+
+  .title {
+    position: absolute;
+    text-transform: uppercase;
+    color: rgba(103, 103, 103, 0.5);
+    font-size: 0.8rem;
+    top: 16px;
+    left: 21px;
+    transition: all 0.5s ease;
+
+    &.dirty {
+      top: -10px;
+      background-color: white;
+      color: rgb(103, 103, 103);
+      font-size: 0.75rem;
+      z-index: 3;
+      padding: .25rem;
+    }
+  }
+}
+
+/* For Firefox */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+/* Webkit browsers like Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

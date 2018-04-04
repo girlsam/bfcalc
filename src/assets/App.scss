@@ -2,11 +2,20 @@
   background-color: white;
   height: 100vh;
   margin: 0 auto;
+  padding: 0 1rem;
   width: 50%;
 
+  section {
+    text-align: center;
+  }
+
   .field-wrapper {
-    //display: inline-block;
-    // width: 100%;
-    // vertical-align: middle;
+    height: 3rem;
+    position: relative;
+  }
+
+  .form-wrapper {
+    padding-top: 1.5rem;
+    position: relative;
   }
 }

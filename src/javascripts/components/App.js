@@ -3,78 +3,79 @@ import '../../assets/App.css';
 
 import RadioInput from './RadioInput';
 import TextInput from './TextInput';
+import Button from './Button';
+
+import { inputData } from '../utilities/data';
+import { calculateBodyFat } from '../utilities/functions'
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selected: 'female',
+      gender: 'female',
       weight: '',
       tricep: '',
       suprailiac: '',
       age: '',
       thigh: '',
-      umbilicus: ''
+      umbilicus: '',
+      total: ''
     }
   }
 
-  handleClick = (e) => {
+  handleRadioClick = (e) => {
     let val = e.target.value;
-    this.setState({ selected: val });
+    this.setState({ gender: val });
   }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: parseFloat(e.target.value) });
+  }
+
+  handleButtonClick = () => {
+    let total = calculateBodyFat(this.state)
+    this.setState({ total });
   }
 
   render() {
+
     return (
       <div className="App">
+        <section>
+          SP
+        </section>
+        <hr />
         <div className="field-wrapper">
           <RadioInput
             inputValue='female'
             inputType='radio'
-            selected={ this.state.selected }
-            handleClick={ this.handleClick }
+            selected={ this.state.gender }
+            handleClick={ this.handleRadioClick }
           />
           <RadioInput
             inputValue='male'
             inputType='radio'
-            selected={this.state.selected}
-            handleClick={this.handleClick}
+            selected={this.state.gender}
+            handleClick={this.handleRadioClick}
           />
         </div>
-        <TextInput
-          placeholderText='Weight'
-          inputName='weight'
-          handleChange={ this.handleChange }
-        />
-        <TextInput
-          placeholderText='Age'
-          inputName='age'
-          handleChange={ this.handleChange }
-        />
-        <TextInput
-          placeholderText='Tricep'
-          inputName='tricep'
-          handleChange={ this.handleChange }
-        />
-        <TextInput
-          placeholderText='Suprailiac'
-          inputName='suprailiac'
-          handleChange={ this.handleChange }
-        />
-        <TextInput
-          placeholderText='Umbilicus'
-          inputName='umbilicus'
-          handleChange={ this.handleChange }
-        />
-        <TextInput
-          placeholderText='Thigh'
-          inputName='thigh'
-          handleChange={ this.handleChange }
-        />
+        <div className='form-wrapper'>
+          { inputData.map(el =>
+            <TextInput
+              inputType={ 'number' }
+              key={ el.id }
+              inputName={ el.inputName }
+              handleChange={ this.handleChange }
+              keepDirty={ this.state[el.inputName] }
+            />
+          )}
+        </div>
+      <Button
+        buttonText="Calculate"
+        handleClick={ this.handleButtonClick }
+      />
+      <div>{ this.state.total }</div>
       </div>
     );
   }
